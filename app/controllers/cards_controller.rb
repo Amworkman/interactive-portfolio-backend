@@ -36,6 +36,7 @@ class CardsController < ApplicationController
   # DELETE /cards/1
   def destroy
     @card.destroy
+    render json: @cards
   end
 
   private
