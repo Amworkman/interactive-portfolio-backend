@@ -27,7 +27,8 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   def update
     if @card.update(card_params)
-      render json: @card
+      @cards = Card.all
+      render json: @cards
     else
       render json: @card.errors, status: :unprocessable_entity
     end
@@ -49,6 +50,6 @@ class CardsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def card_params
-      params.permit(:name, :phone_number, :email, :company_name, :position, :message, :user_id)
+      params.permit(:name, :phone_number, :email, :company_name, :position, :message, :user_id, :viewed)
     end
 end
