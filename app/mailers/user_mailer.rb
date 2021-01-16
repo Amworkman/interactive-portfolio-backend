@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'adammworkman@icloud.com'
+  default from: ENV['MAIL_NAME']
 
   def welcome_email
     @user = params[:user]
