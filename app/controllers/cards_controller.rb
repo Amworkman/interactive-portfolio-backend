@@ -18,6 +18,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
+      UserMailer.with(user: @card).welcome_email.deliver_later
       render json: @card, status: :created, location: @card
     else
       render json: @card.errors, status: :unprocessable_entity
